@@ -1,23 +1,23 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 from app.routes.board import board_router
 from app.routes.member import member_router
 
 app = FastAPI()
 
+# jinja2 설정
+templates = Jinja2Templates(directory='views/templates')
+
 # 외부 route 파일 불러오기
 app.include_router(member_router)
 app.include_router(board_router, prefix='/board')   # 경로를 줄여줌
 
 
-@app.get("/")
-async def index():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+@app.get("/", response_class=HTMLResponse)
+async def index(req: Request):
+    return templates.TemplateResponse('index.html',{'request': req})    # 파일명과 넘길 데이터
 
 
 if __name__ == '_main__':
