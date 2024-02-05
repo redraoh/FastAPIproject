@@ -1,0 +1,33 @@
+/* 레이아웃에 대한 스타일 */
+/*#container { width: 950px; !* border: 1px solid red *!; margin: 0 auto }*/
+hr { background: black; height: 2px; opacity: 0.8 }
+main { min-height: 550px ; background-color: transparent }
+
+/* 폰트 통일 */
+* {font-family: "DungGeunMo", sans-serif}
+
+a:link { text-decoration: none; font-weight: bold; color: black; }
+a:visited { color: black}
+a:hover { background: lightcoral ; opacity: 0.6 }
+a:active { color: cornsilk }
+
+#opacity p:nth-child(2) { background: blue }
+#opacity p:nth-child(2):hover { opacity: 0.7 }
+
+/*form div button:hover {background: lightskyblue}*/
+/*form div button:active {background: green}*/
+
+
+
+/* nav 관련 */
+/*nav ul { list-style: none; margin: 0; padding: 10px}*/
+/*nav ul li { width: 16%; height: 10px ;vertical-align: top; text-align: right; display: inline-block }*/
+/*a { font-family: "DungGeunMo", "Noto Mono for Powerline", sans-serif; }*/
+
+/* a 링크 관련 */
+
+
+/*hr { border: 0; height: 1px ; background: black; padding-top: 1px; line-height: 0 }*/
+
+/*h1 a { color: black; font-family: "DungGeunMo", "Nanum Gothic", "Noto Mono for Powerline", sans-serif }*/
+/*h2 { color: black; font-family: "DungGeunMo", sans-serif; padding: 5px }*/
