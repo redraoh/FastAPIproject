@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>세미 프로젝트 - board/write</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/base.css')}}">
+
+    <style>
+        .layoutline { height: 2px; background-color: black; }
+
+        /* 게시판 글 쓰기에 대한 스타일 */
+        form { width: 510px; margin: 100px auto; }
+        form div { margin-bottom: 5px }
+        form input, form textarea { padding: 5px }
+        form label { font-weight: bold; width: 110px; text-align: right }
+        form button:first-child { margin-left:145px }
+        .dragup { vertical-align: top }
+
+
+        /*table { outline: 1px solid black; width: 90%;*/
+        /*    outline-offset: -1px }*/
+        /*tr { height: 30px }*/
+        /*th,td {outline: 1px solid black; padding: 5px }*/
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header><h1><a href="../index.html">세미 프로젝트 v1</a></h1></header>
+            <nav>
+                <ul class="list-inline row text-center justify-content-evenly mt-5">
+                    <li class="col-2"><a href="../index.html">Home</a></li>
+                    <li class="col-2"><a href="../join.html">회원가입</a></li>
+                    <li class="col-2"><a href="../login.html">로그인</a></li>
+                    <li class="col-2"><a href="list.html">게시판</a></li>
+                    <li class="col-2"><a href="../myinfo.html">회원정보</a></li>
+                </ul>
+                <hr>
+            </nav>
+        <main>
+            <h2>게시판 새글쓰기</h2>
+            <form name="boardfrm">
+                <div class="row">
+                    <div class="col-auto"><label for="title" class="col-form-label">제목</label></div>
+                    <div class="col-auto"><input type="text" name="title" id="title" class="form-control" style="width: 300px"></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto"><label for="userid" class="col-form-label">작성자</label></div>
+                    <div class="col-auto"><input type="text" name="userid" id="userid" value="abc123"class="form-control" readonly style="width: 300px"></div>
+                </div>
+                <div class="row">
+                    <div class="col auto"><label for="contents" class="col-form-label">본문</label></div>
+                    <div class="col-auto"><textarea name="contents" class="form-control" id="contents"
+                              cols="45" rows="7"></textarea></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto"><label for="captcha" class="col-form-label">자동작성방지</label></div>
+                    <div class="col-auto"><img src="/img/captcha.png" id="captcha" alt="캡챠"></div>
+                </div>
+                <div><button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 입력완료</button>
+                    <button type="reset" class="btn btn-secondary"><i class="bi bi-arrow-repeat"></i> 다시입력</button></div>
+            </form>
+        </main>
+
+
+        <footer>
+            <hr>
+            <div class="text-center mt-3">copyright &copy; 2014.2017. siestageek. All Rights Reserved. </div>
+        </footer>
+    </div>
+</body>
+</html>

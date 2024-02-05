@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>세미 프로젝트 - board/view</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/base.css')}}">
+
+    <style>
+        /* 본문보기영역- 60% */
+        /*#view { !* border: 1px solid red; *! width: 60%; margin: 50px auto }*/
+        #view div { margin-bottom: 5px; }
+
+        /* 본문라벨너비 - 110px */
+        #view label { width: 110px; text-align: right; font-weight: bold; margin-right: 15px; }
+
+        /* 본문영역 - 430 x 450 */
+        #contents { display: inline-block; width: 430px; height: 450px; border: 1px solid gold}
+        .dragup { vertical-align: top }
+
+        /* 버튼들 */
+        #view div:nth-child(5) { text-align: center }
+
+        /*table { width: 750px; margin: 50px auto; border-collapse: collapse; table-layout: fixed } table-layout: fixed; border-collapse: collapse */
+
+        /*main div { outline: 1px solid black; width: 60%; margin: 50px auto }*/
+
+        /*main div label:first-child { width: 10%; padding: 5px }*/
+        /*main div label:nth-child(2) { width: 350px; height: 450px }*/
+        /*main div label:nth-child(3) { width: 10% }*/
+        /*main div label:nth-child(4) { width:350px; height: 450px }*/
+
+        /*form label { font-weight: bold; width: 110px; display: inline-block; text-align: right }*/
+
+
+        /*#contents { width: 110px }*/
+
+        /*label*/
+        /*tr { height: 30px }*/
+        /*th,td {outline: 1px solid black; padding: 5px }*/
+
+        /*table { border: 1px solid black; width: 300px;*/
+        /*    margin: 100px auto; border-collapse: collapse }*/
+        /*th, td { border: 1px solid black; padding: 5px  }*/
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header><h1><a href="../index.html">세미 프로젝트 v1</a></h1></header>
+            <nav>
+                <ul class="list-inline row text-center justify-content-evenly mt-5">
+                    <li class="col-2"><a href="../index.html">Home</a></li>
+                    <li class="col-2"><a href="../join.html">회원가입</a></li>
+                    <li class="col-2"><a href="../login.html">로그인</a></li>
+                    <li class="col-2"><a href="list.html">게시판</a></li>
+                    <li class="col-2"><a href="../myinfo.html">회원정보</a></li>
+                </ul>
+                <hr>
+            </nav>
+        <main>
+            <h2>게시판 본문보기</h2>
+            <div id="view" class="container w-50">
+                <div class="row">
+                    <div class="col-auto"><label>제목</label></div>
+                    <div class="col-auto"><span>시간은 금이라구, 친구! 진짜라구, 친구!</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto"><label>작성자</label></div>
+                    <div class="col-auto"><span>abc123</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                    <label>작성일</label></div>
+                    <div class="col-auto"><span>2024-01-22 12:23:34 (987)</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-auto"><label class="dragup">본문</label></div>
+                    <div class="col-auto"><span id="contents" >시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구,
+                        친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구! 시간은 금이라구, 친구! 진짜라구, 친구!
+                    </span></div>
+                </div>
+                <div class="container mx-3">
+                    <button type="button" class="btn btn-success"><i class="bi bi-list"></i> 목록으로</button>
+                    <button type="button" class="btn btn-warning"><i class="bi bi-pencil-square"></i> 수정하기</button>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> 삭제하기</button>
+                </div>
+            </div>
+        </main>
+
+
+        <footer>
+            <hr>
+            <div class="text-center mt-3">copyright &copy; 2014.2017. siestageek. All Rights Reserved. </div>
+        </footer>
+    </div>
+</body>
+</html>
