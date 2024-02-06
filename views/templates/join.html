@@ -1,92 +1,84 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>세미 프로젝트 - join</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', path='/css/base.css')}}">
-    <style>
-        form { width: 500px; margin: 100px auto; }
-        form div { margin-bottom: 5px; }
-        form label { font-weight: bold; width: 110px; text-align: right; }
-        form button:first-child { margin-left: 100px; }
+{% extends 'base.html' %}
 
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header><h1><a href="index.html">세미 프로젝트 v1</a></h1></header>
-            <nav>
-                <ul class="list-inline row text-center justify-content-evenly mt-5">
-                    <li class="col-2"><a href="/">Home</a></li>
-                    <li class="col-2"><a href="/join">회원가입</a></li>
-                    <li class="col-2"><a href="/login">로그인</a></li>
-                    <li class="col-2"><a href="/board/list">게시판</a></li>
-                    <li class="col-2"><a href="/myinfo">회원정보</a></li>
-                </ul>
-                <hr>
-            </nav>
-        <main>
-            <h2>회원가입</h2>
-                <form name="joinfrm">
-                    <div class="row">
-                        <div class="col-auto"><label for="userid" class="col-form-label">아이디</label></div>
-                        <div class="col-auto"><input type="text" name="userid" id="userid" class="form-control" style="width: 200px"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto"><label for="passwd" class="col-form-label">비밀번호</label></div>
-                        <div class="col-auto"><input type="password" name="passwd" id="passwd" class="form-control" style="width: 200px"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto"><label for="repwd" class="col-form-label">비밀번호확인</label></div>
-                        <div class="col-auto"><input type="password" name="repwd" id="repwd" class="form-control" style="width: 200px"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto"><label for="name" class="col-form-label">이름</label></div>
-                        <div class="col-auto"><input type="text" name="name" id="name" class="form-control" style="width: 200px"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto"><label for="email" class="col-form-label">이메일</label></div>
-                        <div class="col-auto"><input type="text" name="email" id="email" class="form-control" style="width: 200px"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto">
-                            <button type="button" class="btn btn-primary"><i class="bi bi-check"></i> 입력완료</button>
-                            <button type="reset" class="btn btn-danger"><i class="bi bi-arrow-repeat"></i> 다시입력</button></div>
-                    </div>
+{% block style %}
+<style>
+    form { width: 500px; margin: 100px auto; }
+    form div { margin-bottom: 5px; }
+    form label { font-weight: bold; width: 110px; text-align: right; }
+    form button:first-child { margin-left: 100px; }
+</style>
+{% endblock %}
+
+{% block main %}
+<main>
+    <h2>회원가입</h2>
+    <form name="joinfrm">
+        <div class="row">
+            <div class="col-auto"><label for="userid" class="col-form-label">아이디</label></div>
+            <div class="col-auto"><input type="text" name="userid" id="userid" class="form-control" style="width: 200px"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto"><label for="passwd" class="col-form-label">비밀번호</label></div>
+            <div class="col-auto"><input type="password" name="passwd" id="passwd" class="form-control" style="width: 200px"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto"><label for="repwd" class="col-form-label">비밀번호확인</label></div>
+            <div class="col-auto"><input type="password" name="repwd" id="repwd" class="form-control" style="width: 200px"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto"><label for="name" class="col-form-label">이름</label></div>
+            <div class="col-auto"><input type="text" name="name" id="name" class="form-control" style="width: 200px"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto"><label for="email" class="col-form-label">이메일</label></div>
+            <div class="col-auto"><input type="text" name="email" id="email" class="form-control" style="width: 200px"></div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <button type="button" class="btn btn-primary" id="joinbtn"><i class="bi bi-check"></i> 입력완료</button>
+                <button type="reset" class="btn btn-danger"><i class="bi bi-arrow-repeat"></i> 다시입력</button></div>
+        </div>
 
 
+    </form>
+</main>
+{% endblock %}
 
-<!--                        <div class="row">-->
-<!--                            <div class="offset-2 col-1"><label for="userid" class="form-label">아이디</label></div>-->
-<!--                            <div class="offset-1 col-2"><input type="text" name="userid" id="userid" class="form-control"></div>-->
-<!--                        </div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="offset-2 col-1"><label for="passwd" class="form-label">비밀번호</label></div>-->
-<!--                            <div class="offset-1 col-2"><input type="password" name="passwd" id="passwd" class="form-control"></div>-->
-<!--                        </div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="offset-2 col-1"><label for="repwd" class="form-label">비밀번호확인</label></div>-->
-<!--                            <div class="offset-1 col-2"><input type="password" name="repwd" id="repwd" class="form-control"></div>-->
-<!--                        </div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="offset-2 col-1"><label for="name" class="form-label">이름</label></div>-->
-<!--                            <div class="offset-1 col-2"><input type="text" name="name" id="name" class="form-control"></div>-->
-<!--                        </div>-->
-<!--                        <div class="row">-->
-<!--                            <div class="offset-2 col-1"><label for="email" class="form-label">이메일</label></div>-->
-<!--                            <div class="offset-1 col-2"><input type="text" name="email" id="email" class="form-control"></div>-->
-<!--                        </div>-->
-                </form>
-        </main>
+{% block script %}
+<script>
+    let joinbtn = document.querySelector('#joinbtn');
+    let joinfrm = document.joinfrm;
+    joinbtn.addEventListener('click', () => {
+        // 폼에 입력된 데이터를 초기화함
+        const formData = new FormData(joinfrm);
+
+        // 서버에 보내기 위해 폼 데이터를 JSON 객체로 변환
+        let jsondata = {};
+        formData.forEach(function (val, key){
+            jsondata[key] = val;
+        });     // 작성된 데이터를 json 형태로 저장함
+        // ajax를 이용해서 서버로 전송하고 결과 받음
+        fetch('http://127.0.0.1:8000/join', {
+            method: 'POST',                     // 데이터 전송방식
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },                                  // 전송할 데이터 형식
+            body: JSON.stringify(jsondata)      // 서버로 전송할 데이터
+        })
+            // .then((res) => res.json())          // 서버로부터 응답받음
+            // .then((data) => console.log(data))  // 서버 데이터 콘솔에 출력
+            // 잘 나오는거 확인하여 주석처리
+            .then((res) => res.text())          // 서버로부터 응답받음 txt로 받음
+            .then((data) => {
+                if (parseInt(data) > 0) location.href = '/joinok' // 회원가입 성공시 페이지 출력
+                else location.href = '/error'           // 회원가입 실패시 페이지 출력
+            })
+            .catch((err) => console.log(err));  // 오류발생시 콘솔에 출력
+    });
 
 
-        <footer>
-            <hr>
-            <div class="text-center mt-3">copyright &copy; 2014.2017. siestageek. All Rights Reserved. </div>
-        </footer>
-    </div>
-</body>
-</html>
+</script>
+{% endblock %}
+
+
