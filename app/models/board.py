@@ -20,3 +20,5 @@ class Board(Base):
     views = Column(Integer, default=0)
     contents = Column(Text, nullable=False)
 
+
+# 테이블의 구조를 나타냄, 자동으로 테이블 만들어주는 ORM 기능 = models/board.py
