@@ -23,12 +23,10 @@ async def on_startup():
     db_startup()
 
 
-
 @app.get("/", response_class=HTMLResponse)
 async def index(req: Request):
     return templates.TemplateResponse('index.html',{'request': req})    # 파일명과 넘길 데이터
 
-
-if __name__ == '_main__':
+if __name__ == '__main__':
     import uvicorn
     uvicorn.run('main:app', reload=True)

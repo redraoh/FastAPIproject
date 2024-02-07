@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<style>
+    table { table-layout: fixed }
+
+    th { text-align: center }
+    td:nth-child(3) { text-align: center }
+    td:nth-child(4) { text-align: center }
+    td:nth-child(5) { text-align: center }
+
+    /*!* 검색, 글쓰기 버튼이 있는 행 *!*/
+    tr:first-child td { border: none; padding: 10px 0 }
+    tr:first-child td:last-child { text-align: center }
+
+    /* 제목열에 대한 스타일 지정 */
+    td:nth-child(2) { text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+    /* 페이지네이션pagenation 스타일 */
+    .pagination a:link { color: #bce55c !important;}
+</style>
+{% endblock %}
+
+{% block main %}
+<main>
+    <h2>게시판 목록</h2>
+    <table class="table table-bordered table-hover container mt-5 w-80" >
+        <colgroup> <!-- table-layout: fixed 속성의 설정된 경우, 각 컬럼에 대한 스타일을 지정 -->
+            <col style="width: 5%">
+            <col style="">
+            <col style="width: 15%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+        </colgroup>
+
+        <thead class="table-dark">
+        <tr><th scope="col">번호</th><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">조회수</th></tr>
+        </thead>
+        <tr><th scope="row">1</th><td><a href="/board/view">시간은 금이라구, 친구! 진짜라구, 친구! 사실이라구 친구, 정말이라구, 친구!</a></td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">2</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">3</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">4</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">5</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">6</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">7</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">8</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">9</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">10</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">11</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">12</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">13</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">14</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">15</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">16</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">17</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">18</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">19</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">20</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">21</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">22</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">23</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+        <tr><th scope="row">24</th><td>시간은 금이라구, 친구!</td><td>epiphany</td><td>2024-01-22</td><td>987</td></tr>
+
+    </table>
+    <div class="offset-10">
+        <button type="button" class="btn btn-primary btn-sm">
+            <a href="/board/write">
+                <i class="bi bi-pencil-square"></i> 글쓰기</a></button></div>
+    <ul class="pagination justify-content-center m-3">
+        <li class="page-item disabled"><a class="page-link" href="#">이전</a></li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#">6</a></li>
+        <li class="page-item"><a class="page-link" href="#">7</a></li>
+        <li class="page-item"><a class="page-link" href="#">8</a></li>
+        <li class="page-item"><a class="page-link" href="#">9</a></li>
+        <li class="page-item"><a class="page-link" href="#">10</a></li>
+        <li class="page-item"><a class="page-link" href="#">다음</a></li>
+    </ul>
+
+
+    <tr><td colspan="2" class="searchbox">
+        <div class="row">
+            <div class="col-auto"><select class="rom-select">
+                <option>제목</option>
+                <option>본문</option>
+                <option>작성자</option>
+                <option>제목+본문</option>
+                <option>댓글내용</option>
+            </select></div>
+        </div>
+        <div class="col-auto">
+            <input type="text" name="search" id="search" class="form-control"></div>
+        <div class="col-auto>">
+            <button type="button">검색하기</button></div>
+    </td>
+        <td colspan="3"><a href="/board/write" class="btn btn-dark text-white">글쓰기</a></td>
+    </tr>
+
+    <div class="col-3 form-floating"> <!--offset-4 col-6-->
+        <select>
+            <option>제목</option>
+            <option>본문</option>
+            <option>작성자</option>
+            <option>제목+본문</option>
+            <option>댓글내용</option>
+        </select>
+        <label for="search" class="form-label">검색 키워드</label>
+        <input type="text" class="form-control" name="search" id="search2" placeholder="name@example.com">
+        <button type="button" class="btn btn-secondary btn-sm">
+            <i class="bi bi-search"></i> 검색하기</button>
+    </div>
+</main>
+{% endblock %}
