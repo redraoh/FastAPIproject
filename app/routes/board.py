@@ -8,6 +8,9 @@ from fastapi import status
 from app.schemas.board import NewBoard
 from app.services.board import BoardService
 
+from math import ceil
+
+
 board_router = APIRouter()
 
 templates = Jinja2Templates(directory='views/templates')
@@ -38,9 +41,11 @@ board_router.mount('/static', StaticFiles(directory='views/static'), name='stati
 @board_router.get('/list/{cpg}', response_class=HTMLResponse)
 def list(req: Request, cpg: int):
     stpg = int((cpg - 1) / 10) * 10 + 1     # 페이지네이션 시작값
-    bdlist = BoardService.select_board(cpg)
+    bdlist, cnt = BoardService.select_board(cpg)
+    allpage = ceil( cnt / 25 )  # 총페이지수(올림해줌)
     return templates.TemplateResponse('/board/list.html',{'request': req, 'bdlist': bdlist,
-                                                          'cpg': cpg, 'stpg': stpg})
+                                                          'cpg': cpg, 'stpg': stpg, 'allpage': allpage})
+
     # request 객체로 보냄
 @board_router.get('/write', response_class=HTMLResponse)
 def write(req: Request):
