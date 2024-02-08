@@ -13,9 +13,17 @@ board_router = APIRouter()
 templates = Jinja2Templates(directory='views/templates')
 board_router.mount('/static', StaticFiles(directory='views/static'), name='static')
 
-@board_router.get('/list', response_class=HTMLResponse)
-def list(req: Request):
-    bdlist = BoardService.select_board()
+# 페이징 알고리즘
+# 페이지당 게시글 수 : 25개 지정
+# 1 page : 1 ~ 25
+# 2 page : 26 ~ 50
+# 3 page : 51 ~ 75
+# ...
+# n page : (n-1)*25+1 ~ 25*n
+
+@board_router.get('/list/{cpg}', response_class=HTMLResponse)
+def list(req: Request, cpg: int):
+    bdlist = BoardService.select_board(cpg)
     return templates.TemplateResponse('/board/list.html',{'request': req, 'bdlist': bdlist})
     # request 객체로 보냄
 @board_router.get('/write', response_class=HTMLResponse)
