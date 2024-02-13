@@ -7,7 +7,16 @@ from app.dbfactory import db_startup
 from app.routes.board import board_router
 from app.routes.member import member_router
 
-app = FastAPI()
+from contextlib import asynccontextmanager
+
+# 서버시작시 디비 생성
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield # 비동기 처리가 가능하게끔
+    db_startup()
+
+
+app = FastAPI(lifespan=lifespan)
 
 # jinja2 설정
 templates = Jinja2Templates(directory='views/templates')
@@ -17,10 +26,6 @@ app.mount('/static', StaticFiles(directory='views/static'), name='static')
 app.include_router(member_router)
 app.include_router(board_router, prefix='/board')   # 경로를 줄여줌
 
-# 서버시작시 디비 생성
-@app.on_event('startup')
-async def on_startup():
-    db_startup()
 
 
 @app.get("/", response_class=HTMLResponse)
