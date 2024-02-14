@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
+{% block style %}
+<style>
+    main div { text-align: center}
+</style>
+{% endblock %}
+
 {% block main %}
 <main>
     <div class="container-fluid align-content-center"><img src="{{ url_for('static', path='/img/gogh.jpg') }}" alt ="별이빛나는밤"></div>
+    <div>
+        <a href="{{ url_for('static', path='/4.png') }}">이미지</a>
+        <a href="{{ url_for('static', path='/doc.zip') }}">압축파일</a>
+        <a href="{{ url_for('static', path='/hello.js') }}">자바스크립트</a>
+    </div>
 </main>
 {% endblock %}

@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.dbfactory import db_startup
 from app.routes.board import board_router
+from app.routes.gallery import gallery_router
 from app.routes.member import member_router
 
 from contextlib import asynccontextmanager
@@ -25,6 +26,7 @@ app.mount('/static', StaticFiles(directory='views/static'), name='static')
 # 외부 route 파일 불러오기
 app.include_router(member_router)
 app.include_router(board_router, prefix='/board')   # 경로를 줄여줌
+app.include_router(gallery_router, prefix='/gallery')
 
 
 
