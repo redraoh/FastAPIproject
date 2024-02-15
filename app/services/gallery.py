@@ -36,7 +36,6 @@ class GalleryService():
             stmt = insert(GalAttach).values(data)
             result = sess.execute(stmt)
             sess.commit()
-
         return result
 
     @staticmethod

@@ -27,4 +27,5 @@ class GalAttach(Base):
     gano = Column(Integer, primary_key=True, autoincrement=True)
     gno = mapped_column(Integer, ForeignKey('gallery.gno'))  # 외부키 가져오기
     fname = Column(String(50), nullable=False)
-    fszie = Column(Integer, default=0)
+
+    fsize = Column(Integer, default=0)
