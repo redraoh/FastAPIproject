@@ -24,16 +24,8 @@
 <main>
     <h2>갤러리 목록</h2>
     <table class="table table-bordered table-hover container mt-5 w-80" >
-        <colgroup> <!-- table-layout: fixed 속성의 설정된 경우, 각 컬럼에 대한 스타일을 지정 -->
-            <col style="width: 5%">
-            <col style="">
-            <col style="width: 15%">
-            <col style="width: 10%">
-            <col style="width: 10%">
-        </colgroup>
 
         <thead class="table-dark">
-        <tr><th scope="col">번호</th><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">조회수</th></tr>
         </thead>
         {% for bd in bdlist %}
         <tr><th scope="row">{{ bd.bno }}</th>
@@ -45,6 +37,27 @@
         {% endfor %}
 
     </table>
+
+    <div class="row justify-content-center">
+        {% for idx in range(1, 25) %}
+        <div class="col-10 card m-1" style="width: 18rem">
+            <img src="http://localhost/cdn/2024021510224417fa9b1a8db7e.jpeg"
+                 class="card-img-top" alt="..."><!-- 이미지-->
+            <div class="card-body">
+                <h5 class="card-title">갤러리 제목</h5>
+                <div><span>작성자</span>
+                     <span>2024-02-15</span>
+                </div>
+                <div>
+                    <span><i class="bi bi-eye"></i> 1234</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div><!-- 갤러리 이미지 리스트 -->
+
+
+
     <div class="offset-10">
         <button type="button" class="btn btn-primary btn-sm">
             <a href="/gallery/write">
@@ -89,19 +102,14 @@
     </div>
 
     <div class="col-3 form-floating"> <!--offset-4 col-6-->
-        <select>
-            <option>제목</option>
-            <option>본문</option>
-            <option>작성자</option>
-            <option>제목+본문</option>
-            <option>댓글내용</option>
-        </select>
+
         <label for="ftype" class="form-label" >검색 키워드</label>
         <input type="text" class="form-control" id="findbtn2" placeholder="name@example.com">
         <button type="button" class="btn btn-secondary btn-sm">
             <i class="bi bi-search"></i> 검색하기</button>
     </div>
 </main>
+
 {% endblock %}
 
 
