@@ -54,19 +54,21 @@ class GalleryService():
 
         return nfname, fsize    # 업로드 이후 결과물 리턴
 
-    # @staticmethod
-    # def select_board(cpg):
-    #     stnum = (cpg - 1) * 25
-    #     with Session() as sess:
-    #         cnt = sess.query(func.count(Board.bno)).scalar()    # 총 게시글 수, scalar 붙여야 값이 넘어옴
-    #
-    #         stmt = select(Board.bno, Board.title, Board.userid,
-    #                       Board.regdate, Board.views)\
-    #                         .order_by(Board.bno.desc())\
-    #                         .offset(stnum).limit(25)
-    #         result = sess.execute(stmt)
-    #
-    #     return result, cnt
+    @staticmethod
+    def select_gallery(cpg):
+        stnum = (cpg - 1) * 25
+        with Session() as sess:
+            cnt = sess.query(func.count(Gallery.gno)).scalar()    # 총 게시글 수, scalar 붙여야 값이 넘어옴
+
+            stmt = select(Gallery.gno, Gallery.title, Gallery.userid,
+                          Gallery.regdate, Gallery.views, GalAttach.fname)\
+                            .join_from(Gallery, GalAttach)\
+                            .order_by(Gallery.gno.desc())\
+                            .offset(stnum).limit(25)
+                            # 조인해서 가져옴
+            result = sess.execute(stmt)
+
+        return result, cnt
     #
     # @staticmethod
     # def selectone_board(bno):
