@@ -67,9 +67,9 @@ async def writeok(title: str = Form(), userid: str = Form(), contents: str = For
 
 @gallery_router.get('/view/{gno}', response_class=HTMLResponse)
 def view(req: Request, gno:str):
-    # bd = BoardService.selectone_board(bno)[0]
-    # BoardService.update_count_board(bno)
-    return templates.TemplateResponse('/gallery/view.html',{'request': req, 'bd': None})
+    gal = GalleryService.selectone_gallery(gno)
+    # GalleryService.update_count_gallery(gno)
+    return templates.TemplateResponse('/gallery/view.html',{'request': req, 'g': gal[0], 'ga': gal[1]})
 
 
 # 검색
