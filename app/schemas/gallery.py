@@ -13,6 +13,10 @@ class Gallery(BaseModel):
 
     class Config:
         from_attributes = True
+class NewGallery(BaseModel):
+    title: str
+    userid: str
+    contents: str
 
 class GalAttach(BaseModel):
     gano: int
@@ -22,3 +26,6 @@ class GalAttach(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+

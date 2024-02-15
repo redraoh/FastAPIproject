@@ -4,12 +4,10 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.responses import RedirectResponse
 from fastapi import status
-
-from app.schemas.board import NewBoard
-from app.services.board import BoardService
-
 from math import ceil
 
+from app.schemas.gallery import NewGallery
+from app.services.gallery import GalleryService
 
 gallery_router = APIRouter()
 
@@ -57,20 +55,13 @@ async def writeok(title: str = Form(), userid: str = Form(), contents: str = For
     # print(title, userid, contents)
     # print(attach.filename, attach.content_type, attach.size)         # 콘솔에서 정보확인
 
-    UPLOAD_DIR = '/opt/homebrew/var/www/cdn'
-    fname = UPLOAD_DIR + '//20240214' + attach.filename # 업로드한 파일이 덮어씌워지는걸 방지. 식별코드,UUID 32비트난수코드 입력.
-
-    # 비동기 처리를 위해 함수에 await 지시자 추가
-    # 이럴 경우 함수 정의부분에 async 라는 지시자 추가 필요! await과 async는 항상 따라다닌다
-    content = await attach.read()    # 업로드한 파일의 내용을 비동기로(await) 모두 읽어옴, 함수에 async 추가
-    with open(fname, 'wb') as f:   # 바이너리 형태로 저장
-        f.write(content)         # 파일의 내용을 지정한 파일이름으로 저장
-
-    
     # if BoardService.check_captcha(bdto):    # captcha 체크가 true 라면 아래진행
     #     result = BoardService.insert_board(bdto)
     #     res_url = '/write_error'
     #     if result.rowcount > 0: res_url = '/gallery/list/1'
+    fname, fsize = await GalleryService.process_upload(attach)
+    gdto = NewGallery(title=title, userid=userid, contents=contents)
+    GalleryService.insert_gallery(gdto, fname, fsize)
 
     return RedirectResponse(res_url, status_code=status.HTTP_302_FOUND)
 
