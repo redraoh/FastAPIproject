@@ -43,7 +43,9 @@
             </div>
         </div>
         <div class="col-4 text-end ms-4" style="margin-left: 10px">
+            {% if 'm' in request.session %}
             <a href="/gallery/write" class="btn btn-dark text-white" style="margin-right: -10px"><i class="bi bi-pencil-square"></i> 글쓰기</a></div>
+            {% endif %}
     </div>
 <!--    -->
 <!--    <table class="table table-bordered table-hover container mt-5 w-80" >-->

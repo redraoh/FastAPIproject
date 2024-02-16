@@ -37,7 +37,11 @@
         </thead>
         {% for bd in bdlist %}
         <tr><th scope="row">{{ bd.bno }}</th>
-            <td><a href="/board/view/{{ bd.bno }}">{{ bd.title }}</a></td>
+            <td>
+                {% if 'm' in request.session %}
+                <a href="/board/view/{{ bd.bno }}">
+                {% endif %}
+                {{ bd.title }}</a></td>
             <td>{{ bd.userid }}</td>
             <td>{{ bd.regdate.strftime('%Y-%m-%d') }}</td>
             <td>{{ bd.views }}</td>
@@ -46,9 +50,13 @@
 
     </table>
     <div class="offset-10">
+        <div>
+        {% if 'm' in request.session %}
         <button type="button" class="btn btn-primary btn-sm">
             <a href="/board/write">
                 <i class="bi bi-pencil-square"></i> 글쓰기</a></button></div>
+        {% endif %}
+        </div>
     <ul class="pagination justify-content-center m-3">
         <!--{# 현재페이지가 1이라면 이전버튼 비활성 #}-->
         {% if cpg == 1 %}<li class="page-item disabled">
