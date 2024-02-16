@@ -54,4 +54,6 @@ def logout(req: Request):
 def myinfo(req: Request):
     if 'm' not in req.session:
         return RedirectResponse(url='/login', status_code=status.HTTP_303_SEE_OTHER)
-    return templates.TemplateResponse('myinfo.html',{'request': req})
+
+    myinfo = MemberService.selectone_member(req.session['m'])
+    return templates.TemplateResponse('myinfo.html',{'request': req, 'my': myinfo})
